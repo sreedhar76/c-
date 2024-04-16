@@ -1,0 +1,21 @@
+#include <iostream>
+// Define a resource manager class
+class ResourceManager {
+public:
+    ResourceManager() {
+        std::cout << "Resource acquired" << std::endl;
+    }
+    ~ResourceManager() {
+        // Release resources in the destructor
+        std::cout << "Resource released" << std::endl;
+    }
+};
+int main() {
+    try {
+        ResourceManager resource; 
+        throw std::runtime_error("Exception occurred");
+    } catch (const std::exception& e) {
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    }
+    return 0;
+}

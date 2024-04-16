@@ -1,0 +1,19 @@
+#include <iostream>
+#include <stdexcept>
+
+int main() {
+    try {
+        try {
+            // Simulate some operation that may throw an exception
+            throw std::runtime_error("Inner exception occurred");
+        } catch (const std::exception& e) {
+            std::cerr << "Inner exception caught: " << e.what() << std::endl;
+            // Re-throwing the caught exception
+            throw;
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "Outer exception caught: " << e.what() << std::endl;
+    }
+
+    return 0;
+}

@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+class MyClass {
+private:
+    int value;
+public:
+    MyClass(int v) : value(v) {}
+    friend ostream& operator<<(ostream& os, const MyClass& obj) {
+        os << "Value: " << obj.value;
+        return os;
+    }
+};
+int main() {
+    MyClass obj(42);
+    cout << "Object contents: " << obj << endl;
+    return 0;
+}
