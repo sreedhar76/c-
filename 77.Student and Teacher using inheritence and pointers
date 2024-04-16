@@ -1,0 +1,126 @@
+Skip to content
+
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Commit
+Create 77.Student and Teacher using Inheritance and Pointers
+ main
+@3bhavanasai
+3bhavanasai committed 10 minutes ago
+1 parent 3b299bb
+commit 9081b28
+Showing 1 changed file with 89 additions and 0 deletions.
+ 89 changes: 89 additions & 0 deletions89  
+77.Student and Teacher using Inheritance and Pointers
+@@ -0,0 +1,89 @@
+#include <iostream>
+#include <string>
+
+// Base class Person
+class Person {
+protected:
+    std::string name;
+    int age;
+    char gender;
+
+public:
+    // Constructor
+    Person(const std::string& name, int age, char gender)
+        : name(name), age(age), gender(gender) {}
+
+    // Getters
+    std::string getName() const { return name; }
+    int getAge() const { return age; }
+    char getGender() const { return gender; }
+
+    // Setters
+    void setName(const std::string& name) { this->name = name; }
+    void setAge(int age) { this->age = age; }
+    void setGender(char gender) { this->gender = gender; }
+};
+
+// Derived class Student
+class Student : public Person {
+private:
+    int rollNumber;
+    std::string className;
+
+public:
+    // Constructor
+    Student(const std::string& name, int age, char gender,
+            int rollNumber, const std::string& className)
+        : Person(name, age, gender), rollNumber(rollNumber), className(className) {}
+
+    // Getters
+    int getRollNumber() const { return rollNumber; }
+    std::string getClassName() const { return className; }
+
+    // Setters
+    void setRollNumber(int rollNumber) { this->rollNumber = rollNumber; }
+    void setClassName(const std::string& className) { this->className = className; }
+};
+
+// Derived class Teacher
+class Teacher : public Person {
+private:
+    std::string subject;
+    double salary;
+
+public:
+    // Constructor
+    Teacher(const std::string& name, int age, char gender,
+            const std::string& subject, double salary)
+        : Person(name, age, gender), subject(subject), salary(salary) {}
+
+    // Getters
+    std::string getSubject() const { return subject; }
+    double getSalary() const { return salary; }
+
+    // Setters
+    void setSubject(const std::string& subject) { this->subject = subject; }
+    void setSalary(double salary) { this->salary = salary; }
+};
+
+int main() {
+    // Creating instances of Student and Teacher
+    Student student("Alice", 18, 'F', 101, "12th Grade");
+    Teacher teacher("Mr. Smith", 35, 'M', "Mathematics", 50000);
+
+    // Displaying student details
+    std::cout << "Student Name: " << student.getName() << std::endl;
+    std::cout << "Student Age: " << student.getAge() << std::endl;
+    std::cout << "Student Gender: " << student.getGender() << std::endl;
+    std::cout << "Student Roll Number: " << student.getRollNumber() << std::endl;
+    std::cout << "Student Class: " << student.getClassName() << std::endl;
+
+    // Displaying teacher details
+    std::cout << "\nTeacher Name: " << teacher.getName() << std::endl;
+    std::cout << "Teacher Age: " << teacher.getAge() << std::endl;
+    std::cout << "Teacher Gender: " << teacher.getGender() << std::endl;
+    std::cout << "Teacher Subject: " << teacher.getSubject() << std::endl;
+    std::cout << "Teacher Salary: $" << teacher.getSalary() << std::endl;
+
+    return 0;
+}
+0 comments on commit 9081b28
+Comment
+ 
+Leave a comment
+ 
+Footer
+© 2024 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact
+Manage cookies
+Do not share my personal information
+Create 77.Student and Teacher using Inheritance and Pointers · 3bhavanasai/C-_programming@9081b28

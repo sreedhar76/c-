@@ -1,0 +1,19 @@
+#include <iostream>
+#include <stdexcept>
+
+int main() {
+    try {
+        // Simulate an operation that may throw an exception
+        int divisor = 0;
+        if (divisor == 0) {
+            throw std::runtime_error("Division by zero error");
+        } else {
+            int result = 10 / divisor;
+            std::cout << "Result: " << result << std::endl;
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "Caught exception: " << e.what() << std::endl;
+    }
+
+    return 0;
+}

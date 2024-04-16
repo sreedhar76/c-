@@ -1,0 +1,64 @@
+#include <iostream>
+
+class Shape {
+protected:
+    double height;
+    double width;
+
+public:
+    // Constructor
+    Shape(double h, double w) : height(h), width(w) {}
+
+    // Virtual destructor
+    virtual ~Shape() {}
+
+    // Virtual functions to calculate area and perimeter
+    virtual double calculateArea() const = 0;
+    virtual double calculatePerimeter() const = 0;
+};
+
+class Rectangle : public Shape {
+public:
+    // Constructor
+    Rectangle(double h, double w) : Shape(h, w) {}
+
+    // Calculate area of rectangle
+    double calculateArea() const override {
+        return height * width;
+    }
+
+    // Calculate perimeter of rectangle
+    double calculatePerimeter() const override {
+        return 2 * (height + width);
+    }
+};
+
+class Triangle : public Shape {
+public:
+    // Constructor
+    Triangle(double h, double w) : Shape(h, w) {}
+
+    // Calculate area of triangle
+    double calculateArea() const override {
+        return 0.5 * height * width;
+    }
+
+    // Calculate perimeter of triangle
+    double calculatePerimeter() const override {
+        // Assuming it's an isosceles triangle for simplicity
+        double side = sqrt(height * height + 0.25 * width * width);
+        return 2 * side + width;
+    }
+};
+
+int main() {
+    Rectangle rect(4, 5);
+    std::cout << "Rectangle Area: " << rect.calculateArea() << std::endl;
+    std::cout << "Rectangle Perimeter: " << rect.calculatePerimeter() << std::endl;
+
+    Triangle tri(3, 4);
+    std::cout << "Triangle Area: " << tri.calculateArea() << std::endl;
+    std::cout << "Triangle Perimeter: " << tri.calculatePerimeter() << std::endl;
+
+    return 0;
+}

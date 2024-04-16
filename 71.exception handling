@@ -1,0 +1,26 @@
+#include <iostream>
+#include <stdexcept>
+
+void processNumber(int num) {
+    try {
+        if (num == 0) {
+            throw std::invalid_argument("Number cannot be zero");
+        } else if (num < 0) {
+            throw std::out_of_range("Number cannot be negative");
+        }
+        std::cout << "Number processed successfully: " << num << std::endl;
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "Invalid argument error: " << e.what() << std::endl;
+    } catch (const std::out_of_range& e) {
+        std::cerr << "Out of range error: " << e.what() << std::endl;
+    } catch (...) {
+        std::cerr << "Unknown error occurred" << std::endl;
+    }
+}
+
+int main() {
+    processNumber(10);  // Valid number
+    processNumber(0);   // Zero, should throw invalid_argument
+    processNumber(-5);  // Negative, should throw out_of_range
+    return 0;
+}

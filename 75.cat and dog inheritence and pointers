@@ -1,0 +1,82 @@
+#include <iostream>
+#include <string>
+
+class Animal {
+protected:
+    std::string name;
+    std::string species;
+    int age;
+
+public:
+    // Constructor
+    Animal(const std::string& name, const std::string& species, int age)
+        : name(name), species(species), age(age) {}
+
+    // Getters
+    std::string getName() const { return name; }
+    std::string getSpecies() const { return species; }
+    int getAge() const { return age; }
+
+    // Setters
+    void setName(const std::string& name) { this->name = name; }
+    void setSpecies(const std::string& species) { this->species = species; }
+    void setAge(int age) { this->age = age; }
+};
+
+class Cat : public Animal {
+private:
+    std::string color;
+    std::string breed;
+
+public:
+    // Constructor
+    Cat(const std::string& name, const std::string& species, int age,
+        const std::string& color, const std::string& breed)
+        : Animal(name, species, age), color(color), breed(breed) {}
+
+    // Getters
+    std::string getColor() const { return color; }
+    std::string getBreed() const { return breed; }
+
+    // Setters
+    void setColor(const std::string& color) { this->color = color; }
+    void setBreed(const std::string& breed) { this->breed = breed; }
+};
+
+class Dog : public Animal {
+private:
+    int weight;
+    std::string breed;
+
+public:
+    // Constructor
+    Dog(const std::string& name, const std::string& species, int age,
+        int weight, const std::string& breed)
+        : Animal(name, species, age), weight(weight), breed(breed) {}
+
+    // Getters
+    int getWeight() const { return weight; }
+    std::string getBreed() const { return breed; }
+
+    // Setters
+    void setWeight(int weight) { this->weight = weight; }
+    void setBreed(const std::string& breed) { this->breed = breed; }
+};
+
+int main() {
+    Cat cat("Whiskers", "Cat", 5, "Tabby", "Siamese");
+    std::cout << "Cat Name: " << cat.getName() << std::endl;
+    std::cout << "Cat Species: " << cat.getSpecies() << std::endl;
+    std::cout << "Cat Age: " << cat.getAge() << std::endl;
+    std::cout << "Cat Color: " << cat.getColor() << std::endl;
+    std::cout << "Cat Breed: " << cat.getBreed() << std::endl;
+
+    Dog dog("Buddy", "Dog", 3, 25, "Labrador");
+    std::cout << "\nDog Name: " << dog.getName() << std::endl;
+    std::cout << "Dog Species: " << dog.getSpecies() << std::endl;
+    std::cout << "Dog Age: " << dog.getAge() << std::endl;
+    std::cout << "Dog Weight: " << dog.getWeight() << " lbs" << std::endl;
+    std::cout << "Dog Breed: " << dog.getBreed() << std::endl;
+
+    return 0;
+}

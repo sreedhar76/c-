@@ -1,0 +1,22 @@
+#include <iostream>
+
+int main() {
+    try {
+        // Attempt to execute the risky code inside the try block
+        int divisor = 0;
+        int result = 10 / divisor; // Division by zero, will throw an exception
+        std::cout << "Result: " << result << std::endl; // This line will not be executed
+    } catch (const std::exception& e) {
+        // Catch any exceptions of type std::exception (and its subclasses)
+        // Print an error message with the exception description
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+    } catch (...) {
+        // Catch any other types of exceptions not caught by the previous catch block
+        // This block will catch exceptions of any type
+        std::cerr << "Unknown exception caught" << std::endl;
+    }
+
+    std::cout << "Program continues after exception handling" << std::endl;
+
+    return 0;
+}
